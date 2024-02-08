@@ -3,13 +3,15 @@ from rango.models import Category, Page
 
 from .models import Page
 
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug':('name',)}
 
 class PageAdmin(admin.ModelAdmin):
     list_display = ["title", "category", "url"]
 
 
 admin.site.register(Page, PageAdmin)
-admin.site.register(Category)
+admin.site.register(Category, CategoryAdmin)
 
 
 # Register your models here.
